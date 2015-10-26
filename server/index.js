@@ -4,7 +4,7 @@ var bodyParser = require('body-parser')
 var app = express()
 global.app = app;
 
-app.set('views', './build/view');
+app.set('views', '../client/view');
 app.set('view engine', 'ejs');
 
 app.controllers = require('controller');
@@ -16,10 +16,10 @@ require('./controllers/SiteController');
 
 app.use(bodyParser.json());
 
-app.use(express.static('build'));
-app.use(express.static('node_modules/angular'));
-app.use(express.static('node_modules/angular-route'));
-app.use(express.static('node_modules/angular-mocks'));
+app.use(express.static('../client'));
+app.use(express.static('../node_modules/angular'));
+app.use(express.static('../node_modules/angular-route'));
+app.use(express.static('../node_modules/angular-mocks'));
 
 app.controllers.createWebApplication({
     urlManager: [
