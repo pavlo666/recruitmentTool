@@ -1,0 +1,120 @@
+<section>
+    <h3>Add new candidate</h3>
+    <form role="form" class="ng-pristine ng-valid" ng-controller="CandidatesAddController as panel">
+        <fieldset>
+            <div class="form-group">
+                <label>Firstname</label>
+                <input type="text" class="form-control" name="firstname" placeholder="Firstname" ng-model="panel.data.firstname">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Secondname</label>
+                <input type="text" class="form-control" name="secondname" placeholder="Secondname" ng-model="panel.data.secondname">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Lastname</label>
+                <input type="text" class="form-control" name="lastname" placeholder="Lastname" ng-model="panel.data.lastname">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Expect Salary</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" name="expect_salary" placeholder="Expect salary" ng-model="panel.data.expect_salary">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Current position</label>
+                <select class="form-control" name="current_position" ng-model="panel.data.current_position">
+                    <option>DEV</option>
+                    <option>QI</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" class="form-control" name="location" placeholder="Location"  ng-model="panel.data.location">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Ready to join</label>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Date">
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" name="current_position">
+                                <option>Week</option>
+                                <option>Day</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Career start date</label>
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" placeholder="month">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" placeholder="year">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>No IT experience</label>
+                <div class="checkbox c-checkbox needsclick">
+                    <label class="needsclick">
+                        <input type="checkbox" class="needsclick" value="">
+                        <span class="fa fa-check"></span>
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Summery</label>
+                <textarea class="form-control" name="summery"></textarea>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Skills</label>
+                <input type="text" class="form-control" name="firstname" placeholder="Firstname">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Attachment</label>
+                <input type="file" class="form-control" data-button-text="" data-class-input="form-control" data-class-button="btn btn-default" filestyle="" id="fileInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
+                <div class="bootstrap-filestyle input-group">
+                    <input type="text" disabled="" class="form-control ">
+                    <span class="group-span-filestyle input-group-btn" tabindex="0">
+                        <label class="btn btn-default " for="fileInput">
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                        </label>
+                    </span>
+                </div>
+            </div>
+        </fieldset>
+        <input type="hidden" name="cid" value="">
+        <button class="btn btn-sm btn-default" ng-click="panel.onClickEdit()">Add</button>
+    </form>
+
+</section>

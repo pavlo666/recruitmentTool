@@ -1,0 +1,110 @@
+body, html {
+    height: 100%;
+}
+body{
+    background-color: #F7F7F7;
+    color: #373737;
+}
+.wrapper {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+}
+.page-header{
+    background-color: #000000;
+    height: 72px;
+    margin: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 11;
+}
+.logo {
+    color: #ffffff;
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 20px 21px;
+}
+.aside{
+    width: 220px;
+    position: fixed;
+    min-height: 100%;
+    background-color: #D8D8D8;
+    z-index: 10;
+}
+.aside .aside-inner{
+    padding: 5px;
+    padding-top: 77px;
+    box-sizing: border-box;
+}
+.menu{
+    background-color: #EBEBEB;
+    float: left;
+    height: 100%;
+    position: absolute;
+    width: 233px;
+}
+.content{
+    margin-top: 72px;
+    margin-left: 220px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.full-screen-page{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #FFFFFF;
+    z-index: 100;
+}
+.one-candidate {
+    background-color: #F1F1F1;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.block-center {
+    margin: 0 auto;
+}
+.wd-xxs {
+    width: 60px;
+}
+.wd-xs {
+    width: 90px;
+}
+.wd-sm {
+    width: 150px;
+}
+.wd-sd {
+    width: 200px;
+}
+.wd-md {
+    width: 240px;
+}
+.wd-lg {
+    width: 280px;
+}
+.wd-xl {
+    width: 320px;
+}
+.wd-xxl {
+    width: 360px;
+}
+.wd-wide {
+    width: 100%;
+}
+.wd-auto {
+    width: auto;
+}
+.wd-zero {
+    width: 0;
+}
+
+.dataTable {
+    width: 100% !important;
+}

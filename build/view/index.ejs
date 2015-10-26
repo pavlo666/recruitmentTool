@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recrutment tool</title>
+
+    <link position="head" href="/css/bootstrap.min.css" rel="stylesheet">
+    <link position="head" href="/css/style.css" rel="stylesheet">
+    <script type="application/javascript" src="/angular.js"></script>
+    <script type="application/javascript" src="/angular-mocks.js"></script>
+    <script type="application/javascript" src="/angular-route.js"></script>
+
+    <script src="/js/controllers/site.js"></script>
+    <script src="/js/controllers/candidates.js"></script>
+    <script src="/js/controllers/vacancies.js"></script>
+    <script src="/js/site.js"></script>
+</head>
+<body>
+    <div class="wrapper ng-scope">
+        <header class="page-header" id="header">
+            <a id="menu-toggle" href=""></a>
+            <a href="/" class="logo pull-left">Recrutment tool</a>
+
+            <div class="media-body">
+                <div id="top-menu" class="media">
+
+                </div>
+            </div>
+        </header>
+
+        <aside id="sidebar" class="aside">
+            <div class="aside-inner">
+                <nav>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>
+                            <a href="#/candidates">Candidates</a>
+                        </li>
+                        <li>
+                            <a href="#/vacancies">Vacancy</a>
+                        </li>
+                        <li>
+                            <a href="#/employees">Employees</a>
+                        </li>
+                        <li>
+                            <a href="#/contact">Contact</a>
+                        </li>
+                        <li>
+                            <a href="#/settings">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#/statistics">Statistics</a>
+                        </li>
+                        <li>
+                            <a href="#/login">Login</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </aside>
+        <section id="content" class="content"  ng-view>
+        </section>
+    </div>
+</body>
+</html>

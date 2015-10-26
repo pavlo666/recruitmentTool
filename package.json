@@ -1,0 +1,15 @@
+{
+  "name": "recrutment-tool",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "angular-route": "1.4.x",
+    "body-parser": "^1.14.1",
+    "ejs": "*",
+    "express": "^4.13.3",
+    "mysql": "*",
+    "body-parser": "1.x"
+  }
+}
