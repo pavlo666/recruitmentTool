@@ -7,7 +7,9 @@ global.app = app;
 app.set('views', '../client/view');
 app.set('view engine', 'ejs');
 
-app.controllers = require('controller');
+var cn = require('controller');
+app.controllers = cn.controllers;
+app.models = cn.models;
 
 
 require('./controllers/CandidatesController');
