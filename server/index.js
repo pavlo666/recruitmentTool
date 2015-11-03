@@ -3,25 +3,31 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var app = express()
 global.app = app;
+global._basePath = __dirname + "/";
 
-app.set('views', '../client/view');
+global.mongoose    = require('mongoose');
+
+
+app.set('views', _basePath + '../client/view');
 app.set('view engine', 'ejs');
 
 var cn = require('controller');
 app.controllers = cn.controllers;
 app.models = cn.models;
 
+require(_basePath + 'models/UserModel');
+require(_basePath + 'models/CandidateModel');
 
-require('./controllers/CandidatesController');
-require('./controllers/VacanciesController');
-require('./controllers/SiteController');
+require(_basePath + 'controllers/CandidatesController');
+require(_basePath + 'controllers/VacanciesController');
+require(_basePath + 'controllers/SiteController');
 
 app.use(bodyParser.json());
 
-app.use(express.static('../client'));
-app.use(express.static('../node_modules/angular'));
-app.use(express.static('../node_modules/angular-route'));
-app.use(express.static('../node_modules/angular-mocks'));
+app.use(express.static(_basePath + '../client'));
+app.use(express.static(_basePath + '../node_modules/angular'));
+app.use(express.static(_basePath + '../node_modules/angular-route'));
+app.use(express.static(_basePath + '../node_modules/angular-mocks'));
 
 app.controllers.createWebApplication({
     urlManager: [
