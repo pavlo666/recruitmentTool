@@ -1,43 +1,51 @@
 app.controllers.defineController("CandidatesController", {
-    actionIndex: function (req, res, db) {
-        db.connect();
-
-        db.query('SELECT cn.* FROM candidates AS cn', function (err, rows, fields) {
-            if (err) throw err;
-            res.json(rows);
+    actionIndex: function (req, res) {
+        app.models.CandidateModel.find(true, function (err, article) {
+            res.json(article);
         });
-        db.end();
     },
-    actionItem: function (req, res, db) {
+    actionItem: function (req, res) {
         var cid = req.params.cid;
-        db.connect();
-
-        db.query('SELECT cn.* FROM candidates AS cn WHERE cn.cid = ' + cid + ' LIMIT 1', function (err, rows, fields) {
-            if (err) throw err;
-
+        app.models.CandidateModel.findById(cid, function (err, article) {
             res.json(rows[0]);
         });
-        db.end();
     },
-    actionAdd: function (req, res, db) {
+    actionAdd: function (req, res) {
         res.json({
-            "cid": 0,
-            "firstname": "",
-            "secondname": "",
-            "lastname": "",
-            "expect_salary": 0,
-            "current_position": "",
-            "location": "",
-            "ready_to_join_in": '',
-            "ready_to_join_in_type": "day(s)",
-            "carrent_start_date": "",
-            "no_it_experience": false,
-            "summery": '',
-            "attachment_path": ''});
+            first_name: "",
+            second_name: "",
+            last_name: "",
+            expect_salary: 0,
+            current_position: "",
+            location: "",
+            ready_to_join_in: 0,
+            ready_to_join_in_type: "",
+            current_start_date: "",
+            no_it_experience: "",
+            summery: "",
+            attachment_path: ""});
     },
-    actionAddItem: function (req, res, db) {
-        console.log(req.query, req.body);
-        //insert item
+    actionAddItem: function (req, res ) {
+        var post = req.body;
+
+        var candidate = new app.models.CandidateModel({
+            first_name: post.first_name,
+            second_name: post.second_name,
+            last_name: post.last_name,
+            expect_salary: post.expect_salary,
+            current_position: post.current_position,
+            location: post.location,
+            ready_to_join_in: post.ready_to_join_in,
+            ready_to_join_in_type: post.ready_to_join_in_type,
+            current_start_date: post.current_start_date,
+            no_it_experience: post.no_it_experience,
+            summery: post.summery,
+            attachment_path: post.attachment_path
+        });
+        candidate.save(function (err) {
+            console.log("Error:",err);
+        });
+
         res.json({});
     },
     actionEdit: function (req, res, db) {

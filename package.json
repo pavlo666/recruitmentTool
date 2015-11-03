@@ -7,10 +7,9 @@
     "angular-mocks": "1.4.x",
     "angular-route": "1.4.x",
     "body-parser": "^1.14.1",
-    "ejs": "*",
+    "ejs": "2.3.4",
     "express": "^4.13.3",
-    "mysql": "*",
     "body-parser": "1.x",
-    "mongoose": "*"
+    "mongoose": "4.2.4"
   }
 }
