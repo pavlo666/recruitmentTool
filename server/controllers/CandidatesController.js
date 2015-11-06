@@ -7,23 +7,12 @@ app.controllers.defineController("CandidatesController", {
     actionItem: function (req, res) {
         var cid = req.params.cid;
         app.models.CandidateModel.findById(cid, function (err, article) {
-            res.json(rows[0]);
+            res.json(article);
         });
     },
     actionAdd: function (req, res) {
-        res.json({
-            first_name: "",
-            second_name: "",
-            last_name: "",
-            expect_salary: 0,
-            current_position: "",
-            location: "",
-            ready_to_join_in: 0,
-            ready_to_join_in_type: "",
-            current_start_date: "",
-            no_it_experience: "",
-            summery: "",
-            attachment_path: ""});
+        var candidate = new app.models.CandidateModel();
+        res.json(candidate);
     },
     actionAddItem: function (req, res ) {
         var post = req.body;
@@ -48,7 +37,7 @@ app.controllers.defineController("CandidatesController", {
 
         res.json({});
     },
-    actionEdit: function (req, res, db) {
+    actionEdit: function (req, res) {
         var cid = req.params.cid;
         db.connect();
 
@@ -58,17 +47,13 @@ app.controllers.defineController("CandidatesController", {
         });
         db.end();
     },
-    actionDelete: function (req, res, db) {
+    actionDelete: function (req, res) {
         var cid = req.params.cid;
-        db.connect();
-
-        db.query('SELECT cn.* FROM candidates AS cn WHERE cn.cid = ' + cid + ' LIMIT 1', function (err, rows, fields) {
-            if (err) throw err;
-            res.json(rows[0]);
+        app.models.CandidateModel.findById(cid, function (err, article) {
+            res.json({_id: cid, title: article.first_name});
         });
-        db.end();
     },
-    actionDeleteItem: function(req, res, db){
+    actionDeleteItem: function(req, res){
         var cid = req.params.cid;
         console.log("item "+cid+" deleted");
         res.json({});

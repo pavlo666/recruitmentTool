@@ -6,3 +6,6 @@ msiexec.exe /q /i mongodb-win32-x86_64-3.0.7-signed.msi ^ INSTALLLOCATION="C:\mo
 
 https://www.python.org/downloads/
 v.2.7.10
+
+
+http://mongoosejs.com/docs/guide.html

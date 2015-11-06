@@ -1,14 +1,15 @@
 <div>
     <div>
         <label>FirstName</label>
-        <span>{{data.firstname}}</span>
+        <span>{{data.first_name}}</span>
     </div>
     <div>
         <label>secondname</label>
-        <span>{{data.secondname}}</span>
+        <span>{{data.second_name}}</span>
     </div>
     <div>
-        <a href="#/candidate/{{data.cid}}/edit">Edit</a>
-        <a href="#/candidate/{{data.cid}}/delete">Delete</a>
+        <a class="btn btn-sm btn-default" href="#/candidate/{{data._id}}/edit">Edit</a>
+        <a class="btn btn-sm btn-default" href="#/candidate/{{data._id}}/delete">Delete</a>
+        <a class="btn btn-sm btn-default" href="#/candidates">Back</a>
     </div>
 </div>

@@ -6,11 +6,11 @@
                 <div class="panel-heading">Delete Item</div>
                 <div class="panel-body">
                     <div class="">
-                        Are you sure want to delete?
+                        Are you sure want to delete candidate {{ data.title }}?
                     </div>
                     <div>
                         <input type="button" class="btn btn-default"  value="Delete" ng-click="panel.onClickDelete()">
-                        <a href="#/candidate/{{data.cid}}" class="btn btn-default">Back</a>
+                        <a href="#/candidate/{{data._id}}" class="btn btn-default">Back</a>
                     </div>
                 </div>
             </div>

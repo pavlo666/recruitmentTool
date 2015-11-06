@@ -4,19 +4,19 @@
         <fieldset>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" class="form-control" name="first_name" placeholder="Firstname" ng-model="panel.data.firstname">
+                <input type="text" class="form-control" name="first_name" placeholder="Firstname" ng-model="panel.data.first_name">
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Secondname</label>
-                <input type="text" class="form-control" name="second_name" placeholder="Secondname" ng-model="panel.data.secondname">
+                <input type="text" class="form-control" name="second_name" placeholder="Secondname" ng-model="panel.data.second_name">
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" class="form-control" name="last_name" placeholder="Lastname" ng-model="panel.data.lastname">
+                <input type="text" class="form-control" name="last_name" placeholder="Lastname" ng-model="panel.data.last_name">
             </div>
         </fieldset>
         <fieldset>
@@ -49,12 +49,12 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Date">
+                            <input type="text" class="form-control" placeholder="Date" ng-model="panel.data.ready_to_join.time">
                         </div>
                         <div class="col-md-2">
-                            <select class="form-control" name="current_position">
-                                <option>Week</option>
-                                <option>Day</option>
+                            <select class="form-control" name="current_position" ng-model="panel.data.ready_to_join.time_type">
+                                <option value="week(s)">Week</option>
+                                <option value="day(s)">Day</option>
                             </select>
                         </div>
                     </div>
@@ -67,10 +67,10 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-md-2">
-                            <input type="text" class="form-control" placeholder="month">
+                            <input type="text" class="form-control" placeholder="month" ng-model="panel.data.current_start_date.month">
                         </div>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" placeholder="year">
+                            <input type="text" class="form-control" placeholder="year" ng-model="panel.data.current_start_date.year">
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <label>No IT experience</label>
                 <div class="checkbox c-checkbox needsclick">
                     <label class="needsclick">
-                        <input type="checkbox" class="needsclick" value="">
+                        <input type="checkbox" class="needsclick" value="1" ng-model="panel.data.no_it_experience">
                         <span class="fa fa-check"></span>
                     </label>
                 </div>
@@ -90,13 +90,13 @@
         <fieldset>
             <div class="form-group">
                 <label>Summery</label>
-                <textarea class="form-control" name="summery"></textarea>
+                <textarea class="form-control" name="summery" ng-model="panel.data.summery"></textarea>
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Skills</label>
-                <input type="text" class="form-control" name="firstname" placeholder="Firstname">
+                <input type="text" class="form-control" name="skills[]" placeholder="Skills" ng-model="panel.data.skills">
             </div>
         </fieldset>
         <fieldset>
