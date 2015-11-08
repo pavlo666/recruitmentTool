@@ -6,7 +6,7 @@
         login: { type: String, required: true },
         password: { type: String, required: true },
         username: { type: String, required: true },
-        role: { type: String, default: "user", required: true }
+        role: { type: String, default: "anonymouse", required: true }
     });
 
     var UserModel = mongoose.model('User', User);

@@ -1,7 +1,8 @@
 var ejs = require('ejs');
 var express = require('express');
-var bodyParser = require('body-parser')
-var app = express()
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var app = express();
 global.app = app;
 global._basePath = __dirname + "/";
 
@@ -24,6 +25,9 @@ require(_basePath + 'controllers/SiteController');
 
 app.use(bodyParser.json());
 
+//app.use(express.cookieParser());
+app.use(session({secret: 'reqrutment123'}));
+
 app.use(express.static(_basePath + '../client'));
 app.use(express.static(_basePath + '../node_modules/angular'));
 app.use(express.static(_basePath + '../node_modules/angular-route'));
@@ -35,50 +39,56 @@ app.controllers.createWebApplication({
             url: "/",
             method: "get",
             path: ["site", "index"],
-            roles: ["all"]
+            roles: ["*"]
         },
         {
             url: "/login",
             method: "get",
             path: ["site", "login"],
-            roles: ["all"]
+            roles: ["anonymouse"]
+        },
+        {
+            url: "/login/user",
+            method: "post",
+            path: ["site", "loginUser"],
+            roles: ["anonymouse"]
         },
         //--------------------------
         {
             url: '/candidates',
             method: "get",
             path: ["candidates", "index"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         {
             url: '/candidates/add',
             method: "get",
             path: ["candidates", "add"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         {
             url: '/candidates/add',
             method: "post",
             path: ["candidates", "addItem"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         {
             url: '/candidate/:cid',
             method: "get",
             path: ["candidates", "item"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         {
             url: '/candidate/:cid/edit',
             method: "get",
             path: ["candidates", "edit"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         {
             url: '/candidate/:cid/delete',
             method: "get",
             path: ["candidates", "delete"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         {
             url: '/candidate/:cid/delete',

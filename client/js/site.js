@@ -14,7 +14,11 @@
             $routeProvider.
                 when('/login', {
                     templateUrl: 'view/site/login.ejs',
-                    controller: 'login'
+                    controller: 'LoginController'
+                }).
+                when('/register', {
+                    templateUrl: 'view/site/register.ejs',
+                    controller: 'RegisterController'
                 }).
                 //--------------------
                 when('/candidates', {

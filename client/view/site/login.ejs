@@ -1,6 +1,6 @@
 <div class="wrapper ng-scope full-screen-page" data-autoscroll="false" data-ui-view=""><!-- uiView:  -->
     <div class="ng-zoomBackDown ng-fluid ng-scope" autoscroll="false" ui-view="">
-        <div class="block-center mt-xl wd-xl ng-scope" ng1-controller="LoginFormController as login">
+        <div class="block-center mt-xl wd-xl ng-scope" ng-controller="LoginController as login">
             <!-- START panel-->
             <div class="panel panel-dark panel-flat">
                 <div class="panel-heading text-center">
@@ -9,35 +9,19 @@
                     </a>
                 </div>
                 <div class="panel-body">
-                    <form class="form-validate mb-lg ng-pristine ng-valid-email ng-invalid ng-invalid-required" novalidate="" name="login.loginForm" ng-submit="login.login()" role="form"><div class="form-group has-feedback">
-                            <input type="email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" required="" ng-model="login.account.email" autocomplete="off" placeholder="Enter email" name="account_email" id="exampleInputEmail1">
-                            <span class="fa fa-envelope form-control-feedback text-muted"></span>
-                            <span class="text-danger ng-hide" ng-show="login.loginForm.account_email.$dirty &amp;&amp; login.loginForm.account_email.$error.required">This field is required</span>
-                            <span class="text-danger ng-hide" ng-show="login.loginForm.account_email.$dirty &amp;&amp; login.loginForm.account_email.$error.email">This field must be a valid email address</span>
+                    <form class="form-validate mb-lg ng-pristine" novalidate=""name="login.loginForm()" ng-submit="login.onClickLogin()" role="form">
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control ng-pristine ng-untouched" required="" ng-model="data.account.login" placeholder="Login" name="account_email">
                         </div>
                         <div class="form-group has-feedback">
-                            <input type="password" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="" ng-model="login.account.password" placeholder="Password" name="account_password" id="exampleInputPassword1">
-                            <span class="fa fa-lock form-control-feedback text-muted"></span>
-                            <span class="text-danger ng-hide" ng-show="login.loginForm.account_password.$dirty &amp;&amp; login.loginForm.account_password.$error.required">
-                                This field is required
-                            </span>
+                            <input type="password" class="form-control ng-pristine ng-untouched" required="" ng-model="data.account.password" placeholder="Password" name="account_password">
                         </div>
-                        <div class="clearfix">
-                            <div class="checkbox c-checkbox pull-left mt0">
-                                <label>
-                                    <input type="checkbox" ng-model="login.account.remember" name="account_remember" value="" class="ng-pristine ng-untouched ng-valid">
-                                    <span class="fa fa-check"></span> Remember Me
-                                </label>
-                            </div>
-                            <div class="pull-right">
-                                <a class="text-muted" ui-sref="page.recover" href="#/page/recover">Forgot your password?</a>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-primary mt-lg" type="submit">Login</button>
+
+                        <input type="submit" class="btn btn-block btn-primary mt-lg" value="Login">
                     </form>
                     <div class="alert alert-danger text-center ng-binding ng-hide" ng-show="login.authMsg"></div>
                     <p class="pt-lg text-center">Need to Signup?</p>
-                    <a class="btn btn-block btn-default" ui-sref="page.register" href="#/page/register">Register Now</a>
+                    <a class="btn btn-block btn-default" ui-sref="page.register" href="#/register">Register Now</a>
                 </div>
             </div>
         </div>

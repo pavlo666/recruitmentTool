@@ -10,6 +10,7 @@
     "ejs": "2.3.4",
     "express": "^4.13.3",
     "body-parser": "1.x",
+    "express-session": "^1.12.1",
     "mongoose": "4.2.4"
   }
 }
