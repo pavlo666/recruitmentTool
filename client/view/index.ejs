@@ -16,7 +16,7 @@
     <script src="/js/controllers/vacancies.js"></script>
     <script src="/js/site.js"></script>
 </head>
-<body>
+<body ng-controller="SiteController as site">
     <div class="wrapper ng-scope">
         <header class="page-header" id="header">
             <a id="menu-toggle" href=""></a>
@@ -24,7 +24,13 @@
 
             <div class="media-body">
                 <div id="top-menu" class="media">
-
+                    <div class="pull-right">
+                        <a ng-show="site.isAnonymouse" href="#/login">Login</a>
+                        <div ng-show="!site.isAnonymouse">
+                            <span>{{site.user.username}}</span>
+                            <a ng-click="site.onClickLogout()">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -50,9 +56,6 @@
                         </li>
                         <li>
                             <a href="#/statistics">Statistics</a>
-                        </li>
-                        <li>
-                            <a href="#/login">Login</a>
                         </li>
                     </ul>
                 </nav>

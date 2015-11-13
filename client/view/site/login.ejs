@@ -9,7 +9,7 @@
                     </a>
                 </div>
                 <div class="panel-body">
-                    <form class="form-validate mb-lg ng-pristine" novalidate=""name="login.loginForm()" ng-submit="login.onClickLogin()" role="form">
+                    <form class="form-validate mb-lg ng-pristine" novalidate="" name="login.loginForm()" ng-submit="login.onClickLogin()" role="form">
                         <div class="form-group has-feedback">
                             <input type="text" class="form-control ng-pristine ng-untouched" required="" ng-model="data.account.login" placeholder="Login" name="account_email">
                         </div>
@@ -19,7 +19,7 @@
 
                         <input type="submit" class="btn btn-block btn-primary mt-lg" value="Login">
                     </form>
-                    <div class="alert alert-danger text-center ng-binding ng-hide" ng-show="login.authMsg"></div>
+                    <div class="alert alert-danger text-center ng-binding ng-hide" ng-show="login.authMsg">{{login.authMsg}}</div>
                     <p class="pt-lg text-center">Need to Signup?</p>
                     <a class="btn btn-block btn-default" ui-sref="page.register" href="#/register">Register Now</a>
                 </div>

@@ -3,6 +3,11 @@ app.controllers.defineController("SiteController", {
     actionIndex: function(req, res){
         res.render('index', { title: 'Hey', message: 'Hello there!'});
     },
+
+    actionUserStatus: function(req, res){
+        res.json(req.session.user);
+    },
+
     actionLogin: function(req, res){
         var user = new app.models.UserModel();
         res.json({account: user});
@@ -18,11 +23,13 @@ app.controllers.defineController("SiteController", {
                     });
                 } else {
                     res.json({
+                        status: false,
                         error: "User does not exist!"
                     });
                 }
             } else {
                 res.json({
+                    status: false,
                     error: "User does not exist!"
                 });
             }
@@ -35,6 +42,21 @@ app.controllers.defineController("SiteController", {
             } else {
                 res.redirect('/');
             }
+        });
+    },
+    actionRegister: function(req, res){
+        var post = req.body;
+        var user = new app.models.UserModel({
+            login: post.login,
+            password: post.password,
+            username: post.username,
+            role: "user"
+        });
+        user.save(function (err) {
+            res.json({
+                status: !err,
+                err: err
+            });
         });
     }
 });

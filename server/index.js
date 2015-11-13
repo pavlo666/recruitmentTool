@@ -42,6 +42,12 @@ app.controllers.createWebApplication({
             roles: ["*"]
         },
         {
+            url: "/userStatus",
+            method: "get",
+            path: ["site", "userStatus"],
+            roles: ["*"]
+        },
+        {
             url: "/login",
             method: "get",
             path: ["site", "login"],
@@ -51,6 +57,12 @@ app.controllers.createWebApplication({
             url: "/login/user",
             method: "post",
             path: ["site", "loginUser"],
+            roles: ["anonymouse"]
+        },
+        {
+            url: "/register",
+            method: "post",
+            path: ["site", "register"],
             roles: ["anonymouse"]
         },
         //--------------------------
