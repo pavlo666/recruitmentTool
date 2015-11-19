@@ -2,8 +2,10 @@ var ejs = require('ejs');
 var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var async = require('async');
 var app = express();
 global.app = app;
+global.async = async;
 global._basePath = __dirname + "/";
 
 global.mongoose    = require('mongoose');
@@ -16,8 +18,10 @@ var cn = require('controller');
 app.controllers = cn.controllers;
 app.models = cn.models;
 
+require(_basePath + 'models/SkillModel');
 require(_basePath + 'models/UserModel');
 require(_basePath + 'models/CandidateModel');
+require(_basePath + 'models/VacancyModel');
 
 require(_basePath + 'controllers/CandidatesController');
 require(_basePath + 'controllers/VacanciesController');
@@ -34,6 +38,13 @@ app.use(express.static(_basePath + '../node_modules/angular-route'));
 app.use(express.static(_basePath + '../node_modules/angular-mocks'));
 
 app.controllers.createWebApplication({
+    db: {
+        host: 'localhost',
+        database: 'recrutment_db',
+        user: 'root',
+        password: '',
+        charset: 'utf8'
+    },
     urlManager: [
         {
             url: "/",
@@ -65,7 +76,13 @@ app.controllers.createWebApplication({
             path: ["site", "register"],
             roles: ["anonymouse"]
         },
-        //--------------------------
+        {
+            url: "/install",
+            method: "get",
+            path: ["site", "install"],
+            roles: ["anonymouse"]
+        },
+        //<editor-fold desc="Url Manager: Candidates">
         {
             url: '/candidates',
             method: "get",
@@ -108,22 +125,52 @@ app.controllers.createWebApplication({
             path: ["candidates", "deleteItem"],
             roles: ["admin"]
         },
-        //--------------------------
+        //</editor-fold>
+        //<editor-fold desc="Url Manager: Vacancies">
         {
             url: '/vacancies',
             method: "get",
             path: ["vacancies", "index"],
+            roles: ["*"]
+        },
+        {
+            url: '/vacancies/add',
+            method: "get",
+            path: ["vacancies", "add"],
+            roles: ["*"]
+        },
+        {
+            url: '/vacancies/add',
+            method: "post",
+            path: ["vacancies", "addItem"],
+            roles: ["*"]
+        },
+        {
+            url: '/vacancy/:vid',
+            method: "get",
+            path: ["vacancies", "item"],
+            roles: ["*"]
+        },
+        {
+            url: '/vacancy/:vid/edit',
+            method: "get",
+            path: ["vacancies", "edit"],
+            roles: ["*"]
+        },
+        {
+            url: '/vacancy/:vid/delete',
+            method: "get",
+            path: ["vacancies", "delete"],
+            roles: ["*"]
+        },
+        {
+            url: '/vacancy/:vid/delete',
+            method: "delete",
+            path: ["vacancies", "deleteItem"],
             roles: ["admin"]
         }
-    ],
-    db: {
-        host: 'localhost',
-        database: 'recrutment_db',
-        user: 'root',
-        password: '',
-        charset: 'utf8'
-    }
-
+        //</editor-fold>
+    ]
 }).start(app);
 
 

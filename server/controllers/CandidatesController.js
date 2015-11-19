@@ -39,13 +39,9 @@ app.controllers.defineController("CandidatesController", {
     },
     actionEdit: function (req, res) {
         var cid = req.params.cid;
-        db.connect();
-
-        db.query('SELECT cn.* FROM candidates AS cn WHERE cn.cid = ' + cid + ' LIMIT 1', function (err, rows, fields) {
-            if (err) throw err;
-            res.json(rows[0]);
+        app.models.CandidateModel.findById(cid, function (err, article) {
+            res.json(article);
         });
-        db.end();
     },
     actionDelete: function (req, res) {
         var cid = req.params.cid;

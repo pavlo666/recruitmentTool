@@ -58,5 +58,35 @@ app.controllers.defineController("SiteController", {
                 err: err
             });
         });
+    },
+    actionInstall: function(req, res){
+        async.parallel([
+            function(callback){
+                var user = new app.models.UserModel({
+                    login: "admin",
+                    password: "admin",
+                    username: "admin",
+                    role: "admin"
+                });
+                user.save(function (err) {
+                    console.log("Admin added");
+                    callback("Admin added");
+                });
+            },
+            function(callback){
+                var user = new app.models.UserModel({
+                    login: "user",
+                    password: "user",
+                    username: "user",
+                    role: "user"
+                });
+                user.save(function (err) {
+                    console.log("User added");
+                    callback("User added");
+                });
+            }],
+            function(err, results){
+                res.send('Installed');
+            });
     }
 });

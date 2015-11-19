@@ -30,7 +30,6 @@
 
             this.onClickLogin = function(){
                 $http.post('login/user', $scope.data.account).success(function (data) {
-                    console.log("R:",data);
                     if (data.status === true) {
                         $location.path( "/" );
                     } else {

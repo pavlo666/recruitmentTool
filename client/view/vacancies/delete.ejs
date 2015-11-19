@@ -1,0 +1,20 @@
+<section ng-controller="VacanciesDeleteController as panel">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Delete Item</div>
+                <div class="panel-body">
+                    <div class="">
+                        Are you sure want to delete vacancy {{ data.title }}?
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn-default"  value="Delete" ng-click="panel.onClickDelete()">
+                        <a href="#/vacancy/{{data._id}}" class="btn btn-default">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</section>

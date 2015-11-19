@@ -1,42 +1,34 @@
 app.controllers.defineController("VacanciesController", {
-    actionIndex: function (req, res, db) {
-        res.json({});
+    actionIndex: function (req, res) {
+        app.models.VacancyModel.find(true, function (err, article) {
+            res.json(article);
+        });
     },
-    actionItem: function (req, res, db) {
-        var cid = req.params.cid;
-        res.json({});
+    actionItem: function (req, res) {
+        var vid = req.params.vid;
+        app.models.VacancyModel.findById(vid, function (err, article) {
+            res.json(article);
+        });
     },
-    actionAdd: function (req, res, db) {
-        res.json({
-            "cid": 0,
-            "firstname": "",
-            "secondname": "",
-            "lastname": "",
-            "expect_salary": 0,
-            "current_position": "",
-            "location": "",
-            "ready_to_join_in": '',
-            "ready_to_join_in_type": "day(s)",
-            "carrent_start_date": "",
-            "no_it_experience": false,
-            "summery": '',
-            "attachment_path": ''});
+    actionAdd: function (req, res) {
+        var vacancy = new app.models.VacancyModel();
+        res.json(vacancy);
     },
-    actionAddItem: function (req, res, db) {
+    actionAddItem: function (req, res) {
         console.log(req.query, req.body);
         //insert item
         res.json({});
     },
-    actionEdit: function (req, res, db) {
-        var cid = req.params.cid;
+    actionEdit: function (req, res) {
+        var vid = req.params.vid;
         res.json({});
     },
-    actionDelete: function (req, res, db) {
-        var cid = req.params.cid;
+    actionDelete: function (req, res) {
+        var vid = req.params.vid;
         res.json({});
     },
-    actionDeleteItem: function(req, res, db){
-        var cid = req.params.cid;
+    actionDeleteItem: function(req, res){
+        var vid = req.params.vid;
         res.json({});
     }
 });
