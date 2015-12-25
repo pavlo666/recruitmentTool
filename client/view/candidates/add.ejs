@@ -1,22 +1,22 @@
 <section>
-    <h3>Edit candidate</h3>
-    <form role="form" class="ng-pristine ng-valid" ng-controller="CandidatesEditController as panel">
+    <h3>Add new candidate</h3>
+    <form role="form" class="ng-pristine ng-valid" ng-controller="CandidatesAddController as panel">
         <fieldset>
             <div class="form-group">
                 <label>Firstname</label>
-                <input type="text" class="form-control" name="first_name" placeholder="Firstname" ng-model="data.first_name">
+                <input type="text" class="form-control" name="first_name" placeholder="Firstname" ng-model="panel.data.first_name">
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Secondname</label>
-                <input type="text" class="form-control" name="second_name" placeholder="Secondname" ng-model="data.second_name">
+                <input type="text" class="form-control" name="second_name" placeholder="Secondname" ng-model="panel.data.second_name">
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Lastname</label>
-                <input type="text" class="form-control" name="last_name" placeholder="Lastname" ng-model="data.last_name">
+                <input type="text" class="form-control" name="last_name" placeholder="Lastname" ng-model="panel.data.last_name">
             </div>
         </fieldset>
         <fieldset>
@@ -24,14 +24,14 @@
                 <label>Expect Salary</label>
                 <div class="input-group">
                     <span class="input-group-addon">$</span>
-                    <input type="text" class="form-control" name="expect_salary" placeholder="Expect salary" ng-model="data.expect_salary">
+                    <input type="text" class="form-control" name="expect_salary" placeholder="Expect salary" ng-model="panel.data.expect_salary">
                 </div>
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Current position</label>
-                <select class="form-control" name="current_position" ng-model="data.current_position">
+                <select class="form-control" name="current_position" ng-model="panel.data.current_position">
                     <option>DEV</option>
                     <option>QI</option>
                 </select>
@@ -40,7 +40,7 @@
         <fieldset>
             <div class="form-group">
                 <label>Location</label>
-                <input type="text" class="form-control" name="location" placeholder="Location"  ng-model="data.location">
+                <input type="text" class="form-control" name="location" placeholder="Location"  ng-model="panel.data.location">
             </div>
         </fieldset>
         <fieldset>
@@ -49,10 +49,10 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Date" ng-model="data.ready_to_join.time">
+                            <input type="text" class="form-control" placeholder="Date" ng-model="panel.data.ready_to_join.time">
                         </div>
                         <div class="col-md-2">
-                            <select class="form-control" name="current_position" ng-model="data.ready_to_join.time_type">
+                            <select class="form-control" name="current_position" ng-model="panel.data.ready_to_join.time_type">
                                 <option value="week(s)">Week</option>
                                 <option value="day(s)">Day</option>
                             </select>
@@ -67,10 +67,10 @@
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-md-2">
-                            <input type="text" class="form-control" placeholder="month" ng-model="data.current_start_date.month">
+                            <input type="text" class="form-control" placeholder="month" ng-model="panel.data.current_start_date.month">
                         </div>
                         <div class="col-md-2">
-                            <input type="text" class="form-control" placeholder="year" ng-model="data.current_start_date.year">
+                            <input type="text" class="form-control" placeholder="year" ng-model="panel.data.current_start_date.year">
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <label>No IT experience</label>
                 <div class="checkbox c-checkbox needsclick">
                     <label class="needsclick">
-                        <input type="checkbox" class="needsclick" value="1" ng-model="data.no_it_experience">
+                        <input type="checkbox" class="needsclick" value="1" ng-model="panel.data.no_it_experience">
                         <span class="fa fa-check"></span>
                     </label>
                 </div>
@@ -90,19 +90,19 @@
         <fieldset>
             <div class="form-group">
                 <label>Summery</label>
-                <textarea class="form-control" name="summery" ng-model="data.summery"></textarea>
+                <textarea class="form-control" name="summery" ng-model="panel.data.summery"></textarea>
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Skills</label>
-                <input type="text" class="form-control" name="skills[]" placeholder="Skills" ng-model="data.skills">
+                <input type="text" class="form-control" name="skills[]" placeholder="Skills" ng-model="panel.data.skills">
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group">
                 <label>Attachment</label>
-                <input type="file" class="form-control" id="fileInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
+                <input type="file" class="form-control" data-button-text="" data-class-input="form-control" data-class-button="btn btn-default" filestyle="" id="fileInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
                 <div class="bootstrap-filestyle input-group">
                     <input type="text" disabled="" class="form-control ">
                     <span class="group-span-filestyle input-group-btn" tabindex="0">
@@ -116,20 +116,19 @@
         <fieldset>
             <div class="form-group">
                 <label>Photo</label>
-                <input type="file" file-model="myFile" class="form-control" id="photoInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
+                <input type="file" class="form-control" data-button-text="" data-class-input="form-control" data-class-button="btn btn-default" filestyle="" id="photoInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
                 <div class="bootstrap-filestyle input-group">
                     <input type="text" disabled="" class="form-control ">
                     <span class="group-span-filestyle input-group-btn" tabindex="0">
-                        <label class="btn btn-default " for="photoInput">
-                            <span class="glyphicon glyphicon-picture"></span>
+                        <label class="btn btn-default " for="fileInput">
+                            <span class="glyphicon glyphicon-folder-open"></span>
                         </label>
                     </span>
                 </div>
-                <button ng-click="uploadFile()">upload me</button>
             </div>
         </fieldset>
-        <input type="hidden" name="cid" value="" ng-model="data.id">
-        <button class="btn btn-lg btn-default" ng-click="panel.onClickEdit()">Edit</button>
+        <input type="hidden" name="cid" value="ng-model="panel.data.id">
+        <button class="btn btn-lg btn-default" ng-click="panel.onClickEdit()">Add</button>
         <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
     </form>
 

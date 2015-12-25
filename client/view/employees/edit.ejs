@@ -1,0 +1,14 @@
+<section>
+    <h3>Add new employee</h3>
+    <form role="form" class="ng-pristine ng-valid" ng-controller="EmployeesAddController as panel">
+        <fieldset>
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" name="first_name" placeholder="Title" ng-model="panel.data.title">
+            </div>
+        </fieldset>
+        <input type="hidden" name="cid" value="">
+        <button class="btn btn-sm btn-default" ng-click="panel.onClickEdit()">Add</button>
+    </form>
+
+</section>

@@ -1,15 +1,62 @@
-<div>
-    <div>
-        <label>FirstName</label>
-        <span>{{data.first_name}}</span>
+<div class="item content-wrapper ng-scope ng-fadeInUp">
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <img class="img-responsive img-circle" src="{{data.photo_path || '/attacments/images/default-no-profile-pic.jpg'}}" alt="{{data.first_name}} {{data.second_name}}">
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <h3>{{data.first_name}} {{data.second_name}} {{data.last_name}}</h3>
+            <ul class="list-unstyled row">
+                <li class="col-md-6">
+                    <label>Expect Salary:</label>
+                    <span>{{data.expect_salary}}</span>
+                </li>
+                <li class="col-md-6">
+                    <label>Current position:</label>
+                    <span>{{data.current_position}}</span>
+                </li>
+                <li class="col-md-6">
+                    <label>Location:</label>
+                    <span>{{data.location}}</span>
+                </li>
+                <li class="col-md-6">
+                    <label>Ready to join:</label>
+                    <span>{{data.ready_to_join.time}} {{data.ready_to_join.time_type}}</span>
+                </li>
+                <li class="col-md-6">
+                    <label>Career start date:</label>
+                    <span>{{data.current_start_date.month}}.{{data.current_start_date.year}}</span>
+                </li>
+                <li class="col-md-6">
+                    <label>No IT experience:</label>
+                    <span>{{data.no_it_experience}}</span>
+                </li>
+                <li class="col-md-6">
+                    <label>Attachment</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#skillsList">Skills</div>
+                <div id="skillsList" class="panel-body collapse in">
+                    {{data.skills.join(", ")}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#summeryText">Summery</div>
+                <div id="summeryText" class="panel-body collapse in">
+                    {{data.summery}}
+                </div>
+            </div>
+        </div>
     </div>
     <div>
-        <label>secondname</label>
-        <span>{{data.second_name}}</span>
-    </div>
-    <div>
-        <a class="btn btn-sm btn-default" href="#/candidate/{{data._id}}/edit">Edit</a>
-        <a class="btn btn-sm btn-default" href="#/candidate/{{data._id}}/delete">Delete</a>
-        <a class="btn btn-sm btn-default" href="#/candidates">Back</a>
+        <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/edit">Edit</a>
+        <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/delete">Delete</a>
+        <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
     </div>
 </div>

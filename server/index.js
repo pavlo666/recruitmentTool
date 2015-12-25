@@ -22,9 +22,12 @@ require(_basePath + 'models/SkillModel');
 require(_basePath + 'models/UserModel');
 require(_basePath + 'models/CandidateModel');
 require(_basePath + 'models/VacancyModel');
+require(_basePath + 'models/EmployeeModel');
 
+require(_basePath + 'controllers/FileController');
 require(_basePath + 'controllers/CandidatesController');
 require(_basePath + 'controllers/VacanciesController');
+require(_basePath + 'controllers//EmployeesController');
 require(_basePath + 'controllers/SiteController');
 
 app.use(bodyParser.json());
@@ -32,6 +35,7 @@ app.use(bodyParser.json());
 //app.use(express.cookieParser());
 app.use(session({secret: 'reqrutment123'}));
 
+app.use("/attacments", express.static(_basePath + '/attacments'));
 app.use(express.static(_basePath + '../client'));
 app.use(express.static(_basePath + '../node_modules/angular'));
 app.use(express.static(_basePath + '../node_modules/angular-route'));
@@ -71,9 +75,21 @@ app.controllers.createWebApplication({
             roles: ["anonymouse"]
         },
         {
+            url: "/login/user",
+            method: "post",
+            path: ["site", "loginUser"],
+            roles: ["anonymouse"]
+        },
+        {
             url: "/register",
             method: "post",
             path: ["site", "register"],
+            roles: ["anonymouse"]
+        },
+        {
+            url: "/fileUpload",
+            method: "post",
+            path: ["file", "photo"],
             roles: ["anonymouse"]
         },
         {
@@ -167,6 +183,50 @@ app.controllers.createWebApplication({
             url: '/vacancy/:vid/delete',
             method: "delete",
             path: ["vacancies", "deleteItem"],
+            roles: ["admin"]
+        },
+        //</editor-fold>
+        //<editor-fold desc="Url Manager: Employees">
+        {
+            url: '/employees',
+            method: "get",
+            path: ["employees", "index"],
+            roles: ["*"]
+        },
+        {
+            url: '/employees/add',
+            method: "get",
+            path: ["employees", "add"],
+            roles: ["*"]
+        },
+        {
+            url: '/employees/add',
+            method: "post",
+            path: ["employees", "addItem"],
+            roles: ["*"]
+        },
+        {
+            url: '/employee/:vid',
+            method: "get",
+            path: ["employees", "item"],
+            roles: ["*"]
+        },
+        {
+            url: '/employee/:vid/edit',
+            method: "get",
+            path: ["employees", "edit"],
+            roles: ["*"]
+        },
+        {
+            url: '/employee/:vid/delete',
+            method: "get",
+            path: ["employees", "delete"],
+            roles: ["*"]
+        },
+        {
+            url: '/employee/:vid/delete',
+            method: "delete",
+            path: ["employees", "deleteItem"],
             roles: ["admin"]
         }
         //</editor-fold>

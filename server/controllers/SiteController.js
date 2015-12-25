@@ -59,6 +59,10 @@ app.controllers.defineController("SiteController", {
             });
         });
     },
+    actionFileUpload: function (req, res) {
+        console.log(Object.keys(req).sort());
+        res.json({});
+    },
     actionInstall: function(req, res){
         async.parallel([
             function(callback){

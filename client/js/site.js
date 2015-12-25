@@ -6,6 +6,7 @@
         'ngRoute',
         'CandidatesModule',
         'VacanciesModule',
+        'EmployeesModule',
         'SiteModule'
     ]);
 
@@ -26,7 +27,7 @@
                     controller: 'CandidatesListController'
                 }).
                 when('/candidates/add', {
-                    templateUrl: 'view/candidates/edit.ejs',
+                    templateUrl: 'view/candidates/add.ejs',
                     controller: 'CandidatesAddController'
                 }).
                 when('/candidate/:cid/edit', {
@@ -62,6 +63,28 @@
                 when('/vacancy/:vid', {
                     templateUrl: 'view/vacancies/item.ejs',
                     controller: 'VacanciesItemController'
+                }).
+                //</editor-fold>
+                //<editor-fold desc="Url Manager: Employees">
+                when('/employees', {
+                    templateUrl: 'view/employees/index.ejs',
+                    controller: 'EmployeesListController'
+                }).
+                when('/employees/add', {
+                    templateUrl: 'view/employees/edit.ejs',
+                    controller: 'EmployeesAddController'
+                }).
+                when('/employee/:vid/edit', {
+                    templateUrl: 'view/employees/edit.ejs',
+                    controller: 'EmployeesEditController'
+                }).
+                when('/employee/:vid/delete', {
+                    templateUrl: 'view/employees/delete.ejs',
+                    controller: 'EmployeesDeleteController'
+                }).
+                when('/employee/:vid', {
+                    templateUrl: 'view/employees/item.ejs',
+                    controller: 'EmployeesItemController'
                 }).
                 //</editor-fold>
                 otherwise({

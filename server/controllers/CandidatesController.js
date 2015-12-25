@@ -29,13 +29,15 @@ app.controllers.defineController("CandidatesController", {
             current_start_date: post.current_start_date,
             no_it_experience: post.no_it_experience,
             summery: post.summery,
-            attachment_path: post.attachment_path
+            attachment: {
+                path: post.attachment_path,
+                name: "file"
+            },
+            skills: post.skills.split(",")
         });
         candidate.save(function (err) {
-            console.log("Error:",err);
+            res.json({status: true});
         });
-
-        res.json({});
     },
     actionEdit: function (req, res) {
         var cid = req.params.cid;
@@ -46,12 +48,17 @@ app.controllers.defineController("CandidatesController", {
     actionDelete: function (req, res) {
         var cid = req.params.cid;
         app.models.CandidateModel.findById(cid, function (err, article) {
-            res.json({_id: cid, title: article.first_name});
+            if (article) {
+                res.json({_id: cid, title: article.first_name});
+            } else {
+                res.json({_id: -1});
+            }
         });
     },
     actionDeleteItem: function(req, res){
         var cid = req.params.cid;
-        console.log("item "+cid+" deleted");
-        res.json({});
+        app.models.CandidateModel.findByIdAndRemove(cid, {}, function (err, article) {
+            res.json({status: true, cid: cid});
+        });
     }
 });
