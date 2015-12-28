@@ -39,6 +39,29 @@ app.controllers.defineController("VacanciesController", {
             res.json(article);
         });
     },
+    actionEditItem: function (req, res) {
+        var vid = req.params.vid;
+        var post = req.body;
+        app.models.VacancyModel.findById(vid, function (err, article) {
+            if (article) {
+                article.title = post.title;
+                article.description = post.description;
+                article.start_date = post.start_date;
+                article.project_name = post.project_name;
+                article.specialty = post.specialty;
+                article.candidate_state = post.candidate_state;
+                article.customer_name = post.customer_name;
+                article.confidential = !!post.confidential;
+                article.grade = post.grade;
+                article.status = post.status;
+                article.save(function(){
+                    res.json({status: true});
+                });
+            } else {
+                res.json({status: false});
+            }
+        });
+    },
     actionDelete: function (req, res) {
         var vid = req.params.vid;
         app.models.VacancyModel.findById(vid, function (err, article) {

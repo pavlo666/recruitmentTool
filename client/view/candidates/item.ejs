@@ -1,4 +1,4 @@
-<div class="item content-wrapper ng-scope ng-fadeInUp">
+<div class="item content-wrapper ng-scope ng-fadeInUp"  ng-controller="CandidatesItemController as panel">
     <div class="row">
         <div class="col-md-3 col-sm-3">
             <img class="img-responsive img-circle" src="{{data.photo_path.path || '/attacments/images/default-no-profile-pic.jpg'}}" alt="{{data.first_name}} {{data.second_name}}">
@@ -34,6 +34,10 @@
                     <label>Attachment:</label>
                     <a href="{{data.attachment.path}}">{{data.attachment.name}}</a>
                 </li>
+                <li class="col-md-6">
+                    <label>Employee:</label>
+                    <span>{{!!data.isEmployee}}</span>
+                </li>
             </ul>
         </div>
     </div>
@@ -59,5 +63,6 @@
         <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/edit">Edit</a>
         <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/delete">Delete</a>
         <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
+        <button ng-click="panel.joinToEmployee()" class="btn btn-lg btn-default {{!!data.isEmployee ? 'hidden': ''}}">Join to employee</button>
     </div>
 </div>

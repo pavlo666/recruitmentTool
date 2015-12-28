@@ -12,13 +12,19 @@
 
         }]);
 
-    candidates.controller('CandidatesItemController', ['$scope', '$http', '$routeParams',
-        function ($scope, $http, $routeParams) {
+    candidates.controller('CandidatesItemController', ['$scope', '$http', '$routeParams', '$location', '$route',
+        function ($scope, $http, $routeParams, $location,$route) {
             var cid = $routeParams.cid;
             $http.get('candidate/' + cid).success(function (data) {
                 $scope.data = data;
             });
 
+            this.joinToEmployee = function(){
+                $http.post('candidate/' + cid + '/joint_to_employee', this.data).success(function (data) {
+                    $location.path( "/candidate/" + cid );
+                    $route.reload();
+                });
+            };
         }]
     );
 

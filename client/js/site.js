@@ -71,18 +71,18 @@
                     controller: 'EmployeesListController'
                 }).
                 when('/employees/add', {
-                    templateUrl: 'view/employees/edit.ejs',
+                    templateUrl: 'view/employees/add.ejs',
                     controller: 'EmployeesAddController'
                 }).
-                when('/employee/:vid/edit', {
+                when('/employee/:eid/edit', {
                     templateUrl: 'view/employees/edit.ejs',
                     controller: 'EmployeesEditController'
                 }).
-                when('/employee/:vid/delete', {
+                when('/employee/:eid/delete', {
                     templateUrl: 'view/employees/delete.ejs',
                     controller: 'EmployeesDeleteController'
                 }).
-                when('/employee/:vid', {
+                when('/employee/:eid', {
                     templateUrl: 'view/employees/item.ejs',
                     controller: 'EmployeesItemController'
                 }).

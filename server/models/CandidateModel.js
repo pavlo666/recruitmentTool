@@ -27,7 +27,8 @@
             path: { type: String, default: "" },
             name: { type: String, default: "" }
         },
-        skills: { type: Array }
+        skills: { type: Array },
+        isEmployee: { type: Boolean, default: false }
     });
 
     var CandidateModel = mongoose.model('Candidate', Candidate);

@@ -130,6 +130,12 @@ app.controllers.createWebApplication({
             roles: ["*"]
         },
         {
+            url: '/candidate/:cid/joint_to_employee',
+            method: "post",
+            path: ["candidates", "joinToEmployee"],
+            roles: ["*"]
+        },
+        {
             url: '/candidate/:cid/edit',
             method: "get",
             path: ["candidates", "edit"],
@@ -186,6 +192,12 @@ app.controllers.createWebApplication({
             roles: ["*"]
         },
         {
+            url: '/vacancy/:vid/edit',
+            method: "post",
+            path: ["vacancies", "editItem"],
+            roles: ["*"]
+        },
+        {
             url: '/vacancy/:vid/delete',
             method: "get",
             path: ["vacancies", "delete"],
@@ -227,6 +239,12 @@ app.controllers.createWebApplication({
             url: '/employee/:vid/edit',
             method: "get",
             path: ["employees", "edit"],
+            roles: ["*"]
+        },
+        {
+            url: '/employee/:vid/edit',
+            method: "post",
+            path: ["employees", "editItem"],
             roles: ["*"]
         },
         {

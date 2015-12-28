@@ -10,6 +10,33 @@ app.controllers.defineController("CandidatesController", {
             res.json(article);
         });
     },
+
+    actionJoinToEmployee: function(req, res){
+        var cid = req.params.cid;
+
+        function addEmployee(){
+            var employee = new app.models.EmployeeModel({
+                cid: cid
+            });
+            employee.save(function (err) {
+                res.json({status: true});
+            });
+        }
+
+        app.models.CandidateModel.findById(cid, function (err, article) {
+            if (article) {
+                article.isEmployee = !article.isEmployee;
+                article.save(function(){
+                    addEmployee();
+                    //res.json({status: true});
+                });
+            } else {
+                res.json({status: false});
+            }
+
+        });
+    },
+
     actionAdd: function (req, res) {
         var candidate = new app.models.CandidateModel();
         res.json(candidate);

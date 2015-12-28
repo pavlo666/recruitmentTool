@@ -20,7 +20,7 @@
         }]
     );
 
-    vacancies.controller('VacanciesAddController', ['$scope', '$http','$location',
+    vacancies.controller('VacanciesAddController', ['$scope', '$http', '$location',
         function ($scope, $http, $location) {
             var self = this;
             this.data  = {};
@@ -34,17 +34,21 @@
                     $location.path( "/vacancies" );
                 });
             };
-
         }]
     );
 
-    vacancies.controller('VacanciesEditController', ['$scope', '$http', '$routeParams',
-        function ($scope, $http, $routeParams) {
+    vacancies.controller('VacanciesEditController', ['$scope', '$http', '$routeParams','$location',
+        function ($scope, $http, $routeParams, $location) {
             var vid = $routeParams.vid;
             $http.get('vacancy/' + vid + '/edit').success(function (data) {
                 $scope.data = data;
             });
 
+            this.onClickEdit = function(){
+                $http.post('vacancy/' + vid + '/edit', $scope.data).success(function (data) {
+                    $location.path( "/vacancy/" + vid);
+                });
+            };
         }]
     );
 

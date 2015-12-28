@@ -11,8 +11,8 @@
 
     employees.controller('EmployeesItemController', ['$scope', '$http', '$routeParams',
         function ($scope, $http, $routeParams) {
-            var cid = $routeParams.cid;
-            $http.get('employees/' + cid).success(function (data) {
+            var eid = $routeParams.eid;
+            $http.get('employee/' + eid).success(function (data) {
                 $scope.data = data;
             });
 
@@ -29,7 +29,8 @@
             });
 
             this.onClickEdit = function(){
-                $http.post('employees/add', this.data).success(function (data) {
+                console.log(self.data);
+                $http.post('employees/add', self.data).success(function (data) {
 
                 });
             };
