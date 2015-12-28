@@ -87,9 +87,15 @@ app.controllers.createWebApplication({
             roles: ["anonymouse"]
         },
         {
-            url: "/fileUpload",
+            url: "/file/photo",
             method: "post",
             path: ["file", "photo"],
+            roles: ["anonymouse"]
+        },
+        {
+            url: "/file/resume",
+            method: "post",
+            path: ["file", "resume"],
             roles: ["anonymouse"]
         },
         {

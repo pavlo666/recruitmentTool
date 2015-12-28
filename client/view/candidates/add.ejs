@@ -48,10 +48,10 @@
                 <label>Ready to join</label>
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-6">
                             <input type="text" class="form-control" placeholder="Date" ng-model="panel.data.ready_to_join.time">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <select class="form-control" name="current_position" ng-model="panel.data.ready_to_join.time_type">
                                 <option value="week(s)">Week</option>
                                 <option value="day(s)">Day</option>
@@ -66,10 +66,10 @@
                 <label>Career start date</label>
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <input type="text" class="form-control" placeholder="month" ng-model="panel.data.current_start_date.month">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <input type="text" class="form-control" placeholder="year" ng-model="panel.data.current_start_date.year">
                         </div>
                     </div>
@@ -99,34 +99,7 @@
                 <input type="text" class="form-control" name="skills[]" placeholder="Skills" ng-model="panel.data.skills">
             </div>
         </fieldset>
-        <fieldset>
-            <div class="form-group">
-                <label>Attachment</label>
-                <input type="file" class="form-control" data-button-text="" data-class-input="form-control" data-class-button="btn btn-default" filestyle="" id="fileInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
-                <div class="bootstrap-filestyle input-group">
-                    <input type="text" disabled="" class="form-control ">
-                    <span class="group-span-filestyle input-group-btn" tabindex="0">
-                        <label class="btn btn-default " for="fileInput">
-                            <span class="glyphicon glyphicon-folder-open"></span>
-                        </label>
-                    </span>
-                </div>
-            </div>
-        </fieldset>
-        <fieldset>
-            <div class="form-group">
-                <label>Photo</label>
-                <input type="file" class="form-control" data-button-text="" data-class-input="form-control" data-class-button="btn btn-default" filestyle="" id="photoInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
-                <div class="bootstrap-filestyle input-group">
-                    <input type="text" disabled="" class="form-control ">
-                    <span class="group-span-filestyle input-group-btn" tabindex="0">
-                        <label class="btn btn-default " for="fileInput">
-                            <span class="glyphicon glyphicon-folder-open"></span>
-                        </label>
-                    </span>
-                </div>
-            </div>
-        </fieldset>
+
         <input type="hidden" name="cid" value="ng-model="panel.data.id">
         <button class="btn btn-lg btn-default" ng-click="panel.onClickEdit()">Add</button>
         <a class="btn btn-lg btn-default" href="#/candidates">Back</a>

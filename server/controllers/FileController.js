@@ -22,5 +22,18 @@ app.controllers.defineController("FileController", {
                 filename: req.file.originalname
             });
         });
+    },
+
+    actionResume: function(req, res){
+        upload(req, res, function(err) {
+            if(err) {
+                return res.json({status: false, error: "Error uploading file."});
+            }
+            res.json({
+                status: true,
+                fullfilename: '/attacments/' + req.file.filename,
+                filename: req.file.originalname
+            });
+        });
     }
 });

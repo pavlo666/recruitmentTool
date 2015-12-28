@@ -68,13 +68,13 @@ app.controllers.defineController("CandidatesController", {
                 article.current_start_date= post.current_start_date;
                 article.no_it_experience= post.no_it_experience;
                 article.summery= post.summery;
-                article.attachment= {
-                    path: post.attachment_path,
-                    name: "file"
+                article.attachment = {
+                    path: post.attachment.path,
+                    name: post.attachment.name
                 };
-                article.photo_path= {
+                article.photo_path = {
                     path: post.photo_path.path,
-                        name: post.photo_path.name
+                    name: post.photo_path.name
                 };
                 article.skills = Array.isArray(post.skills) ? post.skills : post.skills.split(",");
                 article.save(function(){

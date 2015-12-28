@@ -48,10 +48,10 @@
                 <label>Ready to join</label>
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-6">
                             <input type="text" class="form-control" placeholder="Date" ng-model="data.ready_to_join.time">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <select class="form-control" name="current_position" ng-model="data.ready_to_join.time_type">
                                 <option value="week(s)">Week</option>
                                 <option value="day(s)">Day</option>
@@ -66,10 +66,10 @@
                 <label>Career start date</label>
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <input type="text" class="form-control" placeholder="month" ng-model="data.current_start_date.month">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-4">
                             <input type="text" class="form-control" placeholder="year" ng-model="data.current_start_date.year">
                         </div>
                     </div>
@@ -102,12 +102,16 @@
         <fieldset>
             <div class="form-group">
                 <label>Attachment</label>
-                <input type="file" class="form-control" id="fileInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
+                <input type="file" file-model="myAttachment" class="form-control" id="fileInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
+                <button id="uploadResume" class="hidden" ng-click="uploadResume()">upload me</button>
                 <div class="bootstrap-filestyle input-group">
-                    <input type="text" disabled="" class="form-control ">
+                    <input type="text" readonly="" class="form-control " ng-model="candidate_resume">
                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                         <label class="btn btn-default " for="fileInput">
                             <span class="glyphicon glyphicon-folder-open"></span>
+                        </label>
+                        <label class="btn btn-default " for="uploadResume">
+                            <span class="glyphicon glyphicon-upload"></span>
                         </label>
                     </span>
                 </div>
@@ -117,14 +121,14 @@
             <div class="form-group">
                 <label>Photo</label>
                 <input type="file" file-model="myFile" class="form-control" id="photoInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
-                <button id="uploadFile" class="hidden" ng-click="uploadFile()">upload me</button>
+                <button id="uploadPhoto" class="hidden" ng-click="uploadPhoto()">upload me</button>
                 <div class="bootstrap-filestyle input-group">
                     <input type="text" class="form-control" readonly="" value="" ng-model="candidate_photo">
                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                         <label class="btn btn-default " for="photoInput">
                             <span class="glyphicon glyphicon-picture"></span>
                         </label>
-                        <label class="btn btn-default " for="uploadFile">
+                        <label class="btn btn-default " for="uploadPhoto">
                             <span class="glyphicon glyphicon-upload"></span>
                         </label>
                     </span>

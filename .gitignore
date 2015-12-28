@@ -19,3 +19,4 @@
 /node_modules/karma
 /node_modules/protractor
 /node_modules/multer
+/server/attacments

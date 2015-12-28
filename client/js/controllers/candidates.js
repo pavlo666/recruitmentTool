@@ -79,15 +79,28 @@
                 $scope.candidate_photo = data.photo_path.name;
             });
 
-            $scope.uploadFile = function(){
+            $scope.uploadPhoto = function(){
                 var file = $scope.myFile;
                 $scope.candidate_photo = file.name;
 
-                var uploadUrl = "/fileUpload";
+                var uploadUrl = "/file/photo";
                 fileUpload.uploadFileToUrl(file, uploadUrl, function(data){
                     if (data.status) {
                         $scope.data.photo_path.path = data.fullfilename;
                         $scope.data.photo_path.name = data.filename;
+                    }
+                });
+            };
+
+            $scope.uploadResume = function(){
+                var file = $scope.myAttachment;
+                $scope.candidate_resume = file.name;
+
+                var uploadUrl = "/file/resume";
+                fileUpload.uploadFileToUrl(file, uploadUrl, function(data){
+                    if (data.status) {
+                        $scope.data.attachment.path = data.fullfilename;
+                        $scope.data.attachment.name = data.filename;
                     }
                 });
             };
