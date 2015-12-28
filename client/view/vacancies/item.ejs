@@ -1,11 +1,51 @@
-<div>
-    <div>
-        <label>Title</label>
-        <span>{{data.title}}</span>
-    </div>
-    <div>
-        <a class="btn btn-sm btn-default" href="#/vacancy/{{data._id}}/edit">Edit</a>
-        <a class="btn btn-sm btn-default" href="#/vacancy/{{data._id}}/delete">Delete</a>
-        <a class="btn btn-sm btn-default" href="#/vacancies">Back</a>
+<div class="item content-wrapper ng-scope ng-fadeInUp">
+    <div class="row">
+        <div class="col-md-12"><h3>{{data.title}}</h3></div>
+        <div class="col-md-4">
+            <ul class="list-unstyled">
+                <li>
+                    <label>Start date</label>
+                    <span>{{data.start_date}}</span>
+                </li>
+                <li>
+                    <label>Project name</label>
+                    <span>{{data.project_name}}</span>
+                </li>
+                <li>
+                    <label>Specialty</label>
+                    <span>{{data.specialty}}</span>
+                </li>
+                <li>
+                    <label>Candidate state</label>
+                    <span>{{data.candidate_state}}</span>
+                </li>
+                <li>
+                    <label>Customer name</label>
+                    <span>{{data.customer_name}}</span>
+                </li>
+                <li>
+                    <label>Confidential</label>
+                    <span>{{data.confidential}}</span>
+                </li>
+                <li>
+                    <label>Grade</label>
+                    <span>{{data.grade}}</span>
+                </li>
+                <li>
+                    <label>Status</label>
+                    <span>{{data.status}}</span>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-md-8">
+            {{data.description}}
+        </div>
+
+        <div class="col-md-12">
+            <a class="btn btn-sm btn-default" href="#/vacancy/{{data._id}}/edit">Edit</a>
+            <a class="btn btn-sm btn-default" href="#/vacancy/{{data._id}}/delete">Delete</a>
+            <a class="btn btn-sm btn-default" href="#/vacancies">Back</a>
+        </div>
     </div>
 </div>

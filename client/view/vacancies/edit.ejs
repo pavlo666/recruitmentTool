@@ -1,10 +1,74 @@
 <section>
     <h3>Add new vacancy</h3>
+
     <form role="form" class="ng-pristine ng-valid" ng-controller="VacanciesAddController as panel">
         <fieldset>
             <div class="form-group">
                 <label>Title</label>
                 <input type="text" class="form-control" name="first_name" placeholder="Title" ng-model="panel.data.title">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea rows="5" cols="120" class="form-control" ng-model="panel.data.description"></textarea>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Start date</label>
+                <input type="text" class="form-control" name="start_date" placeholder="Start date" ng-model="panel.data.start_date">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Project name</label>
+                <input type="text" class="form-control" name="project_name" placeholder="Project name" ng-model="panel.data.project_name">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Specialty</label>
+                <input type="text" class="form-control" name="specialty" placeholder="Specialty" ng-model="panel.data.specialty">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>candidate_state</label>
+                <select class="form-control" name="candidate_state" ng-model="panel.data.candidate_state">
+                    <option>shadow</option>
+                    <option>forecasted</option>
+                    <option>billed</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Customer name</label>
+                <input type="text" class="form-control" name="customer_name" placeholder="Customer name" ng-model="panel.data.customer_name">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Confidential</label>
+                <input type="checkbox" class="form-control" value="1" name="confidential" ng-model="panel.data.confidential">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Grade</label>
+                <input type="text" class="form-control" name="grade" placeholder="Grade" ng-model="panel.data.grade">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Status</label>
+                <select class="form-control" ng-model="panel.data.status">
+                    <option>cloned</option>
+                    <option>postponed</option>
+                    <option>invalid</option>
+                    <option>active</option>
+                </select>
             </div>
         </fieldset>
         <input type="hidden" name="cid" value="">

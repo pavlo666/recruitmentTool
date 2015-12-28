@@ -15,17 +15,39 @@ app.controllers.defineController("VacanciesController", {
         res.json(vacancy);
     },
     actionAddItem: function (req, res) {
-        console.log(req.query, req.body);
-        //insert item
-        res.json({});
+        var post = req.body;
+
+        var vacancy = new app.models.VacancyModel({
+            title: post.title,
+            description: post.description,
+            start_date: post.start_date,
+            project_name: post.project_name,
+            specialty: post.specialty,
+            candidate_state: post.candidate_state,
+            customer_name: post.customer_name,
+            confidential: !!post.confidential,
+            grade: post.grade,
+            status: post.status
+        });
+        vacancy.save(function (err) {
+            res.json({status: true});
+        });
     },
     actionEdit: function (req, res) {
         var vid = req.params.vid;
-        res.json({});
+        app.models.VacancyModel.findById(vid, function (err, article) {
+            res.json(article);
+        });
     },
     actionDelete: function (req, res) {
         var vid = req.params.vid;
-        res.json({});
+        app.models.VacancyModel.findById(vid, function (err, article) {
+            if (article) {
+                res.json({_id: vid, title: article.title});
+            } else {
+                res.json({_id: -1});
+            }
+        });
     },
     actionDeleteItem: function(req, res){
         var vid = req.params.vid;

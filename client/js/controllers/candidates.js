@@ -57,42 +57,43 @@
     }]);
 
     candidates.service('fileUpload', ['$http', function ($http) {
-        this.uploadFileToUrl = function(file, uploadUrl){
+        this.uploadFileToUrl = function(file, uploadUrl, callback){
             var fd = new FormData();
             fd.append('file', file);
-
             $http.post(uploadUrl, fd, {
+                withCredentials: true,
                 transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
-            })
-
-                .success(function(){
-                })
-
-                .error(function(){
-                });
+                headers: {'Content-Type': undefined }
+            }).success(function(data){
+                    callback(data);
+            }).error(function(){});
         }
     }]);
 
     candidates.controller('CandidatesEditController', ['$scope', '$http', '$routeParams','$location','fileUpload',
         function ($scope, $http, $routeParams, $location, fileUpload) {
             var cid = $routeParams.cid;
+            $scope.candidate_photo = "";
             $http.get('candidate/' + cid + '/edit').success(function (data) {
                 $scope.data = data;
+                $scope.candidate_photo = data.photo_path.name;
             });
 
             $scope.uploadFile = function(){
                 var file = $scope.myFile;
-
-                console.log('file is ' );
-                console.dir(file);
+                $scope.candidate_photo = file.name;
 
                 var uploadUrl = "/fileUpload";
-                fileUpload.uploadFileToUrl(file, uploadUrl);
+                fileUpload.uploadFileToUrl(file, uploadUrl, function(data){
+                    if (data.status) {
+                        $scope.data.photo_path.path = data.fullfilename;
+                        $scope.data.photo_path.name = data.filename;
+                    }
+                });
             };
 
             this.onClickEdit = function(){
-                $http.post('candidates/add', this.data).success(function (data) {
+                $http.post('candidate/' + cid + '/edit', $scope.data).success(function (data) {
                     $location.path( "/candidate/" + cid );
                 });
             };

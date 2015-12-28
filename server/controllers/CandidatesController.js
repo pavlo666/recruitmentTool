@@ -33,6 +33,10 @@ app.controllers.defineController("CandidatesController", {
                 path: post.attachment_path,
                 name: "file"
             },
+            photo_path: {
+                path: post.photo_path.path,
+                name: post.photo_path.name
+            },
             skills: post.skills.split(",")
         });
         candidate.save(function (err) {
@@ -43,6 +47,43 @@ app.controllers.defineController("CandidatesController", {
         var cid = req.params.cid;
         app.models.CandidateModel.findById(cid, function (err, article) {
             res.json(article);
+        });
+    },
+
+    actionEditItem: function (req, res) {
+        var cid = req.params.cid;
+        var post = req.body;
+        app.models.CandidateModel.findById(cid, function (err, article) {
+            //console.log("EDIT:",article);
+            //console.log("POST:",post);
+            if (article) {
+                article.first_name = post.first_name;
+                article.second_name = post.second_name;
+                article.last_name= post.last_name;
+                article.expect_salary= post.expect_salary;
+                article.current_position= post.current_position;
+                article.location= post.location;
+                article.ready_to_join_in= post.ready_to_join_in;
+                article.ready_to_join_in_type= post.ready_to_join_in_type;
+                article.current_start_date= post.current_start_date;
+                article.no_it_experience= post.no_it_experience;
+                article.summery= post.summery;
+                article.attachment= {
+                    path: post.attachment_path,
+                    name: "file"
+                };
+                article.photo_path= {
+                    path: post.photo_path.path,
+                        name: post.photo_path.name
+                };
+                article.skills = Array.isArray(post.skills) ? post.skills : post.skills.split(",");
+                article.save(function(){
+                    res.json({status: true});
+                });
+            } else {
+                res.json({status: false});
+            }
+
         });
     },
     actionDelete: function (req, res) {

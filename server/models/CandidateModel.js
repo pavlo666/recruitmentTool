@@ -23,7 +23,10 @@
             path: { type: String, default: "" },
             name: { type: String, default: "" }
         },
-        photo_path: { type: String, default: "" },
+        photo_path: {
+            path: { type: String, default: "" },
+            name: { type: String, default: "" }
+        },
         skills: { type: Array }
     });
 

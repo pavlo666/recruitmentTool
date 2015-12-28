@@ -117,15 +117,18 @@
             <div class="form-group">
                 <label>Photo</label>
                 <input type="file" file-model="myFile" class="form-control" id="photoInput" style="position: absolute; clip: rect(0px, 0px, 0px, 0px);" tabindex="-1">
+                <button id="uploadFile" class="hidden" ng-click="uploadFile()">upload me</button>
                 <div class="bootstrap-filestyle input-group">
-                    <input type="text" disabled="" class="form-control ">
+                    <input type="text" class="form-control" readonly="" value="" ng-model="candidate_photo">
                     <span class="group-span-filestyle input-group-btn" tabindex="0">
                         <label class="btn btn-default " for="photoInput">
                             <span class="glyphicon glyphicon-picture"></span>
                         </label>
+                        <label class="btn btn-default " for="uploadFile">
+                            <span class="glyphicon glyphicon-upload"></span>
+                        </label>
                     </span>
                 </div>
-                <button ng-click="uploadFile()">upload me</button>
             </div>
         </fieldset>
         <input type="hidden" name="cid" value="" ng-model="data.id">

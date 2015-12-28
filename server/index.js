@@ -130,6 +130,12 @@ app.controllers.createWebApplication({
             roles: ["*"]
         },
         {
+            url: '/candidate/:cid/edit',
+            method: "post",
+            path: ["candidates", "editItem"],
+            roles: ["*"]
+        },
+        {
             url: '/candidate/:cid/delete',
             method: "get",
             path: ["candidates", "delete"],

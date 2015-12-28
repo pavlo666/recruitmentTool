@@ -12,16 +12,16 @@
 
     vacancies.controller('VacanciesItemController', ['$scope', '$http', '$routeParams',
         function ($scope, $http, $routeParams) {
-            var cid = $routeParams.cid;
-            $http.get('vacancies/' + cid).success(function (data) {
+            var vid = $routeParams.vid;
+            $http.get('vacancy/' + vid).success(function (data) {
                 $scope.data = data;
             });
 
         }]
     );
 
-    vacancies.controller('VacanciesAddController', ['$scope', '$http',
-        function ($scope, $http) {
+    vacancies.controller('VacanciesAddController', ['$scope', '$http','$location',
+        function ($scope, $http, $location) {
             var self = this;
             this.data  = {};
 
@@ -30,8 +30,8 @@
             });
 
             this.onClickEdit = function(){
-                $http.post('candidates/add', this.data).success(function (data) {
-
+                $http.post('vacancies/add', this.data).success(function (data) {
+                    $location.path( "/vacancies" );
                 });
             };
 
@@ -40,8 +40,8 @@
 
     vacancies.controller('VacanciesEditController', ['$scope', '$http', '$routeParams',
         function ($scope, $http, $routeParams) {
-            var cid = $routeParams.cid;
-            $http.get('vacancies/' + cid + '/edit').success(function (data) {
+            var vid = $routeParams.vid;
+            $http.get('vacancy/' + vid + '/edit').success(function (data) {
                 $scope.data = data;
             });
 
@@ -50,13 +50,13 @@
 
     vacancies.controller('VacanciesDeleteController', ['$scope', '$http', '$routeParams',
         function ($scope, $http, $routeParams) {
-            var cid = $routeParams.cid;
-            $http.get('vacancy/' + cid + '/delete').success(function (data) {
+            var vid = $routeParams.vid;
+            $http.get('vacancy/' + vid + '/delete').success(function (data) {
                 $scope.data = data;
             });
 
             this.onClickDelete = function(){
-                $http.delete('vacancy/' + cid + '/delete').success(function (data) {
+                $http.delete('vacancy/' + vid + '/delete').success(function (data) {
 
                 });
             };
