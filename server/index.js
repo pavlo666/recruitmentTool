@@ -17,12 +17,13 @@ app.set('view engine', 'ejs');
 var cn = require('controller');
 app.controllers = cn.controllers;
 app.models = cn.models;
+app.types = cn.types;
 
 require(_basePath + 'models/SkillModel');
 require(_basePath + 'models/UserModel');
+require(_basePath + 'models/EmployeeModel');
 require(_basePath + 'models/CandidateModel');
 require(_basePath + 'models/VacancyModel');
-require(_basePath + 'models/EmployeeModel');
 
 require(_basePath + 'controllers/FileController');
 require(_basePath + 'controllers/CandidatesController');
@@ -212,52 +213,16 @@ app.controllers.createWebApplication({
         //</editor-fold>
         //<editor-fold desc="Url Manager: Employees">
         {
-            url: '/employees',
-            method: "get",
-            path: ["employees", "index"],
-            roles: ["*"]
-        },
-        {
-            url: '/employees/add',
-            method: "get",
-            path: ["employees", "add"],
-            roles: ["*"]
-        },
-        {
-            url: '/employees/add',
-            method: "post",
-            path: ["employees", "addItem"],
-            roles: ["*"]
-        },
-        {
-            url: '/employee/:vid',
-            method: "get",
-            path: ["employees", "item"],
-            roles: ["*"]
-        },
-        {
-            url: '/employee/:vid/edit',
+            url: '/employee/:cid/edit',
             method: "get",
             path: ["employees", "edit"],
             roles: ["*"]
         },
         {
-            url: '/employee/:vid/edit',
+            url: '/employee/:cid/edit',
             method: "post",
             path: ["employees", "editItem"],
             roles: ["*"]
-        },
-        {
-            url: '/employee/:vid/delete',
-            method: "get",
-            path: ["employees", "delete"],
-            roles: ["*"]
-        },
-        {
-            url: '/employee/:vid/delete',
-            method: "delete",
-            path: ["employees", "deleteItem"],
-            roles: ["admin"]
         }
         //</editor-fold>
     ]

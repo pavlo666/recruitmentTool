@@ -28,7 +28,16 @@
             name: { type: String, default: "" }
         },
         skills: { type: Array },
-        isEmployee: { type: Boolean, default: false }
+        isEmployee: { type: Boolean, default: false },
+        employee: {
+            birthday: { type: String, default: "" },
+            address: { type: String, default: "" },
+            postal_code: { type: String, default: null },
+            email: { type: String, default: "" },
+            url_linkedin: { type: String, default: "" },
+            url_social_network: { type: String, default: "" },
+            skype: { type: String, default: "" }
+        }
     });
 
     var CandidateModel = mongoose.model('Candidate', Candidate);

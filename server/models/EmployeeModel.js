@@ -11,7 +11,8 @@
         url_social_network: { type: String, default: "" }
     });
 
-    var EmployeeModel = mongoose.model('Employee', Employee);
+    var EmployeeModel = mongoose.model('EmployeeModel', Employee);
 
+    app.types.defineType("Employee", Employee);
     app.models.defineModel("EmployeeModel", EmployeeModel);
 })();

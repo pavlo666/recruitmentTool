@@ -43,6 +43,12 @@
                     controller: 'CandidatesItemController'
                 }).
                 //</editor-fold>
+                //<editor-fold desc="Url Manager: Employees">
+                when('/employee/:cid/edit', {
+                    templateUrl: 'view/employees/edit.ejs',
+                    controller: 'EmployeesEditController'
+                }).
+                //</editor-fold>
                 //<editor-fold desc="Url Manager: Vacancies">
                 when('/vacancies', {
                     templateUrl: 'view/vacancies/index.ejs',
@@ -65,28 +71,7 @@
                     controller: 'VacanciesItemController'
                 }).
                 //</editor-fold>
-                //<editor-fold desc="Url Manager: Employees">
-                when('/employees', {
-                    templateUrl: 'view/employees/index.ejs',
-                    controller: 'EmployeesListController'
-                }).
-                when('/employees/add', {
-                    templateUrl: 'view/employees/add.ejs',
-                    controller: 'EmployeesAddController'
-                }).
-                when('/employee/:eid/edit', {
-                    templateUrl: 'view/employees/edit.ejs',
-                    controller: 'EmployeesEditController'
-                }).
-                when('/employee/:eid/delete', {
-                    templateUrl: 'view/employees/delete.ejs',
-                    controller: 'EmployeesDeleteController'
-                }).
-                when('/employee/:eid', {
-                    templateUrl: 'view/employees/item.ejs',
-                    controller: 'EmployeesItemController'
-                }).
-                //</editor-fold>
+
                 otherwise({
                     redirectTo: '/'
                 });

@@ -32,7 +32,7 @@
                 </li>
                 <li class="col-md-6">
                     <label>Attachment:</label>
-                    <a href="{{data.attachment.path}}">{{data.attachment.name}}</a>
+                    <a class="{{data.attachment.path?'':'hidden'}}" href="{{data.attachment.path}}">{{data.attachment.name}}</a>
                 </li>
                 <li class="col-md-6">
                     <label>Employee:</label>
@@ -42,6 +42,20 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12 {{!data.isEmployee ? 'hidden': ''}}">
+            <div class="panel panel-default">
+                <div class="panel-heading" data-toggle="collapse" data-target="#employeeData">Employee data</div>
+                <div id="employeeData" class="panel-body collapse in">
+                    <ul class="list-unstyled">
+                        <li>Birsday: {{data.employee.address}}, {{data.employee.postal_code}}</li>
+                        <li><a href="https://www.google.com.ua/maps/place/{{data.employee.address.replace(' ', '+')}}" target="_blank">{{data.employee.address}}, {{data.employee.postal_code}}</a></li>
+                        <li><a href="mailto:{{data.employee.email}}">Email: {{data.employee.email}}</a></li>
+                        <li><a href="{{data.employee.url_linkedin}}" target="_blank">LinkedIn Profile</a></li>
+                        <li><a href="{{data.employee.url_social_network}}" target="_blank">Social Network</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="collapse" data-target="#skillsList">Skills</div>
@@ -60,9 +74,11 @@
         </div>
     </div>
     <div>
+        <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
         <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/edit">Edit</a>
         <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/delete">Delete</a>
-        <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
         <button ng-click="panel.joinToEmployee()" class="btn btn-lg btn-default {{!!data.isEmployee ? 'hidden': ''}}">Join to employee</button>
+        <button ng-click="panel.joinToEmployee()" class="btn btn-lg btn-default {{!data.isEmployee ? 'hidden': ''}}">Unjoin to employee</button>
+        <a href="#/employee/{{data._id}}/edit" class="btn btn-lg btn-default {{!data.isEmployee ? 'hidden': ''}}">Edit employee data</a>
     </div>
 </div>
