@@ -1,0 +1,14 @@
+<section>
+    <h3>Add new feedback</h3>
+    <form role="form" class="ng-pristine ng-valid" ng-controller="FeedbackEditController as panel">
+        <fieldset>
+            <div class="form-group">
+                <label>Firstname</label>
+                <input type="text" class="form-control" name="first_name" placeholder="Firstname" ng-model="panel.data.first_name">
+            </div>
+        </fieldset>
+        <button class="btn btn-lg btn-default" ng-click="panel.onClickEdit()">Add</button>
+        <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
+    </form>
+
+</section>

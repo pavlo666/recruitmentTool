@@ -22,10 +22,12 @@ app.types = cn.types;
 require(_basePath + 'models/SkillModel');
 require(_basePath + 'models/UserModel');
 require(_basePath + 'models/EmployeeModel');
+require(_basePath + 'models/FeedbackModel');
 require(_basePath + 'models/CandidateModel');
 require(_basePath + 'models/VacancyModel');
 
 require(_basePath + 'controllers/FileController');
+require(_basePath + 'controllers/FeedbackController');
 require(_basePath + 'controllers/CandidatesController');
 require(_basePath + 'controllers/VacanciesController');
 require(_basePath + 'controllers//EmployeesController');
@@ -158,6 +160,56 @@ app.controllers.createWebApplication({
             url: '/candidate/:cid/delete',
             method: "delete",
             path: ["candidates", "deleteItem"],
+            roles: ["admin"]
+        },
+        //</editor-fold>
+        //<editor-fold desc="Url Manager: Feedbacks">
+        {
+            url: '/feedbacks',
+            method: "get",
+            path: ["feedback", "index"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedbacks/add/:cid',
+            method: "get",
+            path: ["feedback", "add"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedbacks/add/:cid',
+            method: "post",
+            path: ["feedback", "addItem"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedback/:fid',
+            method: "get",
+            path: ["feedback", "item"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedback/:fid/edit',
+            method: "get",
+            path: ["feedback", "edit"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedback/:fid/edit',
+            method: "post",
+            path: ["feedback", "editItem"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedback/:fid/delete',
+            method: "get",
+            path: ["feedback", "delete"],
+            roles: ["*"]
+        },
+        {
+            url: '/feedback/:fid/delete',
+            method: "delete",
+            path: ["feedback", "deleteItem"],
             roles: ["admin"]
         },
         //</editor-fold>

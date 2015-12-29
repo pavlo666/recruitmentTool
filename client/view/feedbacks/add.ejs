@@ -1,0 +1,28 @@
+<section>
+    <h3>Add new feedback</h3>
+    <form role="form" class="ng-pristine ng-valid" ng-controller="FeedbackAddController as panel">
+        <fieldset>
+            <div class="form-group">
+                <label>Candidate</label>
+                <input type="text" class="form-control" name="candidate" placeholder="Candidate" readonly="">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Is private</label>
+                <input type="checkbox" name="first_name" ng-model="data.is_private">
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label>Content</label>
+                <textarea class="form-control" name="content" ng-model="data.content"></textarea>
+            </div>
+        </fieldset>
+
+        <input type="hidden" ng-model="data.cid">
+        <button class="btn btn-lg btn-default" ng-click="panel.onClickEdit()">Create</button>
+        <a class="btn btn-lg btn-default" href="#/candidate/{{data.cid}}">Back</a>
+    </form>
+
+</section>

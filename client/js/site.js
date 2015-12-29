@@ -4,6 +4,7 @@
 
     var app = angular.module('app', [
         'ngRoute',
+        'FeedbackModule',
         'CandidatesModule',
         'VacanciesModule',
         'EmployeesModule',
@@ -71,7 +72,28 @@
                     controller: 'VacanciesItemController'
                 }).
                 //</editor-fold>
-
+                //<editor-fold desc="Url Manager: Feedbacks">
+                when('/feedbacks', {
+                    templateUrl: 'view/feedbacks/index.ejs',
+                    controller: 'FeedbackListController'
+                }).
+                when('/feedbacks/add/:cid', {
+                    templateUrl: 'view/feedbacks/add.ejs',
+                    controller: 'FeedbackAddController'
+                }).
+                when('/feedbacks/:fid/edit', {
+                    templateUrl: 'view/feedbacks/edit.ejs',
+                    controller: 'FeedbackEditController'
+                }).
+                when('/vacancy/:fid/delete', {
+                    templateUrl: 'view/feedbacks/delete.ejs',
+                    controller: 'FeedbackDeleteController'
+                }).
+                when('/feedback/:fid', {
+                    templateUrl: 'view/feedbacks/item.ejs',
+                    controller: 'FeedbackItemController'
+                }).
+                //</editor-fold>
                 otherwise({
                     redirectTo: '/'
                 });
