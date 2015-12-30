@@ -158,9 +158,9 @@ app.controllers.createWebApplication({
         },
         {
             url: '/candidate/:cid/delete',
-            method: "delete",
+            method: "post",
             path: ["candidates", "deleteItem"],
-            roles: ["admin"]
+            roles: ["*"]
         },
         //</editor-fold>
         //<editor-fold desc="Url Manager: Feedbacks">

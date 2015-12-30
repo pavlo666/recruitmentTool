@@ -8,7 +8,7 @@
         content: { type: String, default: "" },
         is_private: { type: Boolean, default: false },
         resolution: { type: String, default: null },
-        date_create: { type: String, default: "" },
+        date_create: { type: Number, default: Date.now() },
         files: [{
             path: { type: String, default: "" },
             name: { type: String, default: "" }

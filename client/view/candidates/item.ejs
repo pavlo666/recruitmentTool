@@ -42,6 +42,16 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12" style="padding-bottom: 10px;">
+            <a class="btn btn-sm btn-default glyphicon glyphicon-menu-left" href="#/candidates"></a>
+            <a class="btn btn-sm btn-default glyphicon glyphicon-edit" href="#/candidate/{{data._id}}/edit"></a>
+            <a class="btn btn-sm btn-default glyphicon glyphicon-trash" href="#/candidate/{{data._id}}/delete"></a>
+            <button ng-click="panel.joinToEmployee()" class="btn btn-sm btn-default glyphicon glyphicon-user
+glyphicon {{!!data.isEmployee ? 'hidden': ''}}" title="Join to employee"></button>
+            <button ng-click="panel.joinToEmployee()" class="btn btn-sm btn-default glyphicon glyphicon-user
+glyphicon {{!data.isEmployee ? 'hidden': ''}}" title="Unjoin to employee"></button>
+            <a href="#/employee/{{data._id}}/edit" class="btn btn-sm btn-default glyphicon glyphicon-pencil {{!data.isEmployee ? 'hidden': ''}}" title="Edit employee data"></a>
+        </div>
         <div class="col-md-12 {{!data.isEmployee ? 'hidden': ''}}">
             <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="collapse" data-target="#employeeData">Employee data</div>
@@ -76,20 +86,24 @@
             <div class="panel panel-default">
                 <div class="panel-heading" data-toggle="collapse" data-target="#feedbacks">
                     Feedbacks
-                    <a href="#/feedbacks/add/{{data._id}}">+</a>
+                    <a href="#/feedbacks/add/{{data._id}}" class="glyphicon glyphicon-plus"></a>
                 </div>
                 <div id="feedbacks" class="panel-body collapse in">
-                    Feedbacks
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="feedback in feedbacks">
+                            <div>
+                                <div class="pull-right label" style="color: inherit;" ng-bind="panel.formatDate(feedback.date_create)"></div>
+                                <h4 class="list-group-header">
+                                    <a class="glyphicon glyphicon-pencil edit-feedback" href="#/feedback/{{feedback._id}}/edit"></a>
+                                    {{feedback.resolution}}
+                                </h4>
+                                <div>{{feedback.content}}</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <a class="btn btn-lg btn-default" href="#/candidates">Back</a>
-        <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/edit">Edit</a>
-        <a class="btn btn-lg btn-default" href="#/candidate/{{data._id}}/delete">Delete</a>
-        <button ng-click="panel.joinToEmployee()" class="btn btn-lg btn-default {{!!data.isEmployee ? 'hidden': ''}}">Join to employee</button>
-        <button ng-click="panel.joinToEmployee()" class="btn btn-lg btn-default {{!data.isEmployee ? 'hidden': ''}}">Unjoin to employee</button>
-        <a href="#/employee/{{data._id}}/edit" class="btn btn-lg btn-default {{!data.isEmployee ? 'hidden': ''}}">Edit employee data</a>
-    </div>
+
 </div>

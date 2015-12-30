@@ -15,9 +15,15 @@
     candidates.controller('CandidatesItemController', ['$scope', '$http', '$routeParams', '$location', '$route',
         function ($scope, $http, $routeParams, $location,$route) {
             var cid = $routeParams.cid;
+            var self = this;
             $http.get('candidate/' + cid).success(function (data) {
-                $scope.data = data;
+                $scope.data = data.candidate;
+                $scope.feedbacks = data.feedbacks;
             });
+
+            this.formatDate = function(value){
+                return (new Date(value)).toLocaleString();
+            };
 
             this.joinToEmployee = function(){
                 $http.post('candidate/' + cid + '/joint_to_employee', this.data).success(function (data) {
@@ -112,6 +118,9 @@
             };
 
             this.onClickEdit = function(){
+                if (!Array.isArray($scope.data.skills)) {
+                    $scope.data.skills = $scope.data.skills.split(",");
+                }
                 $http.post('candidate/' + cid + '/edit', $scope.data).success(function (data) {
                     $location.path( "/candidate/" + cid );
                 });
@@ -130,7 +139,7 @@
             });
 
             this.onClickDelete = function(){
-                $http.delete('candidate/' + cid + '/delete').success(function (data) {
+                $http.post('candidate/' + cid + '/delete').success(function (data) {
                     $location.path( "/candidates" );
                 });
             };

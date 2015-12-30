@@ -6,9 +6,33 @@ app.controllers.defineController("CandidatesController", {
     },
     actionItem: function (req, res) {
         var cid = req.params.cid;
-        app.models.CandidateModel.findById(cid, function (err, article) {
-            res.json(article);
-        });
+        async.parallel([
+            function(callback){
+                app.models.CandidateModel.findById(cid, function (err, article) {
+                    if (article) {
+                        callback(null, article);
+                    } else {
+                        callback("Error");
+                    }
+                });
+            },
+            function(callback){
+                app.models.FeedbackModel.find({cid: cid}, function (err, data) {
+                    if (data) {
+                        callback(null, data);
+                    } else {
+                        callback("Error");
+                    }
+                });
+            }],
+            function(err, results){
+                res.json({
+                    status: true,
+                    candidate: results[0],
+                    feedbacks: results[1]
+                });
+            }
+        );
     },
 
     actionJoinToEmployee: function(req, res){
@@ -54,7 +78,7 @@ app.controllers.defineController("CandidatesController", {
                 path: post.photo_path.path,
                 name: post.photo_path.name
             },
-            skills: post.skills.split(",")
+            skills: post.skills
         });
         candidate.save(function (err) {
             res.json({status: true});
@@ -71,8 +95,6 @@ app.controllers.defineController("CandidatesController", {
         var cid = req.params.cid;
         var post = req.body;
         app.models.CandidateModel.findById(cid, function (err, article) {
-            //console.log("EDIT:",article);
-            //console.log("POST:",post);
             if (article) {
                 article.first_name = post.first_name;
                 article.second_name = post.second_name;

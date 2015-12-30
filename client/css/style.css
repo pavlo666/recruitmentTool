@@ -109,4 +109,12 @@ body{
     width: 100% !important;
 }
 /*--------------------------------------------------*/
+.list-group-header {
+    border-bottom: 2px solid #CCCCCC;
+}
+.edit-feedback{
+    font-size: 0.8em;
+    color: inherit;
+}
+
 

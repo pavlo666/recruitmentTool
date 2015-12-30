@@ -21,18 +21,18 @@
         }]
     );
 
-    feedback.controller('FeedbackAddController', ['$scope', '$http', '$location',
-        function ($scope, $http, $location) {
-            var self = this;
-            this.data  = {};
+    feedback.controller('FeedbackAddController', ['$scope', '$http', '$routeParams', '$location',
+        function ($scope, $http, $routeParams, $location) {
+            var cid = $routeParams.cid;
 
-            $http.get('candidates/add').success(function (data) {
-                self.data = data;
+            $http.get('feedbacks/add/' + cid).success(function (data) {
+                $scope.candidateName = data.name;
+                $scope.data = data.feedback;
             });
 
             this.onClickEdit = function(){
-                $http.post('candidates/add', this.data).success(function (data) {
-                    $location.path( "/candidates" );
+                $http.post('feedbacks/add/'+ cid, $scope.data).success(function () {
+                    $location.path( "/candidate/" + cid);
                 });
             };
 
