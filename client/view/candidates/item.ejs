@@ -95,7 +95,7 @@ glyphicon {{!data.isEmployee ? 'hidden': ''}}" title="Unjoin to employee"></butt
                                 <div class="pull-right label" style="color: inherit;" ng-bind="panel.formatDate(feedback.date_create)"></div>
                                 <h4 class="list-group-header">
                                     <a class="glyphicon glyphicon-pencil edit-feedback" href="#/feedback/{{feedback._id}}/edit"></a>
-                                    {{feedback.resolution}}
+                                    <a href="#feedback/{{feedback._id}}" class="label-feedback">{{feedback.resolution}}</a>
                                 </h4>
                                 <div>{{feedback.content}}</div>
                             </div>

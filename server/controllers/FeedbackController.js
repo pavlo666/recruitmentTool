@@ -5,7 +5,10 @@ app.controllers.defineController("FeedbackController", {
         });
     },
     actionItem: function (req, res) {
-        res.json({status: true});
+        var fid = req.params.fid;
+        app.models.FeedbackModel.findById(fid, function (err, article) {
+            res.json(article);
+        });
     },
 
     actionJoinToEmployee: function(req, res){

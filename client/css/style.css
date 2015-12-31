@@ -116,5 +116,7 @@ body{
     font-size: 0.8em;
     color: inherit;
 }
-
+.label-feedback{
+    color: inherit;
+}
 
